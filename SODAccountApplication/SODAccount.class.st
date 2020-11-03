@@ -7,9 +7,26 @@ Class {
 	#category : #SODAccountApplication
 }
 
+{ #category : #'instance creation' }
+SODAccount class >> newBalance: aBalance [
+
+	|initialTransaction| 
+	initialTransaction := SODTransaction newAmount: aBalance atTime: DateAndTime now.
+	^ self new 
+		handleTransaction: initialTransaction;
+		yourself 
+		
+]
+
 { #category : #api }
 SODAccount >> getBalance [
 	^ self log balance
+]
+
+{ #category : #api }
+SODAccount >> handleTransaction: aTransaction [
+
+	self log add: aTransaction 
 ]
 
 { #category : #initialize }

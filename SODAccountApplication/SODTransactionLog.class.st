@@ -9,6 +9,12 @@ Class {
 }
 
 { #category : #api }
+SODTransactionLog >> add: aTransaction [
+
+	self transactions add: aTransaction 
+]
+
+{ #category : #api }
 SODTransactionLog >> balance [ 
 	^ self transactions sumNumbers: #amount
 ]
@@ -19,6 +25,12 @@ SODTransactionLog >> initialize [
 	self transactions: SortedCollection new.
 	self sortBlock: [:t1 :t2 | t1 <= t2 ]
 	
+]
+
+{ #category : #api }
+SODTransactionLog >> remove: aTransaction [
+
+	self transactions remove: aTransaction 
 ]
 
 { #category : #accessing }
